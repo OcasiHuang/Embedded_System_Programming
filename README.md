@@ -1,6 +1,5 @@
-# Embedded_System_Programming
-# Include 4 projects
-# Shared Message Queues in User and Kernel Space
-# GPIO control in Linux
-# SPI Device Programming and Pulse Measurement
-# Event Handling and Signaling in Linux
+Embedded_System_Programming:
+Including 3 projects
+- Shared Message Queues
+- GPIO control in Linux
+- SPI Device Programming and Pulse Measurement
