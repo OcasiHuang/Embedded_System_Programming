@@ -1,0 +1,88 @@
+Team 16 Members
+
+ASUID: 1213307613 
+Name: YU-CHUN HUANG
+
+ASUID: 1213383702 
+Name: MING-CHE WENG
+
+===================================================================================================
+Component:
+
+"WalkingRedMan.c"
+"pattern.h"
+"WRMLED_ioctl.h"
+"WRM_kernel.c"
+"HCSR04_kernel.c"
+"Makefile"
+"Readme"(This file)
+
+===================================================================================================
+Setup: 
+
+Prepare the Galileo2 board, attach MAX7219(LED Matrix) and HC-SR04(Ultrasonic Sensor) to the breadboard, and make the connections as following:
+
+HC-SR04:
+Vcc:  5V
+Trig: IO2
+Echo: IO3
+Gnd:  GND
+
+MAX7219:
+VCC:  5V
+GND:  GND
+DIN:  IO11
+CS:   IO12
+CLK:  IO13
+
+===================================================================================================
+How to execute:
+
+	0. Please check user define parameter in WalkingRedMan.c, line 34~49.
+	(Since the program will terminated in fixed time, it's likely that user want to change TOTAL_RUN_TIME in line 36)
+	
+	1. type "make all"
+	
+	2. scp files(WRM, WRM_kernel.ko and HCSR04_kernel.ko) to Galileo2
+
+Following parts are executed in Galileo2:
+
+	3. type "insmod HCSR04_kernel.ko"
+	
+	4. type "rmmod spidev"
+
+	5. type "insmod WRM_kernel.ko"
+
+	6. type "./WRM"
+
+===================================================================================================
+Description:
+
+All modules required in this part of assignment are implemented and separate into following parts:
+
+	"WRM_kernelc"
+		-> SPI driver in linux kernel, including the IOCTL and WRITE function indicated. 
+	
+	"HCSR04_kernel.c"
+		-> Sensor driver in linux kernel, including the WRITE and READ function indicated.
+	
+	"WRMLED_ioctl.h"
+		-> Definition file for IOCTL function of SPI driver.
+	
+	"pattern.h"
+		-> 10 display patterns we designed.
+	
+	"WalkingRedMan.c"
+		-> A main user program to call SPI driver and sensor driver.
+
+As "./WRM" is entered, the executing program will display welcoming message when doing the initial setup.
+
+Afterward, the Walking Red Man(our pattern) starts to walk toward left. 
+
+If the object is:
+	Moving away from the sensor -> The Walking Red Man walk/run rightward.
+	Moving toward the sensor -> The Walking Red Man walk/run leftward.
+
+Also, according to the distance between the object and sensor, the Walking Red Man will run or walk. If the distance is long, the Walking Red Man will walk slow; If the distance is short, the  Walking Red Man will run fast.
+
+After a fix number of time(default is 20 seconds). The program will terminated.
