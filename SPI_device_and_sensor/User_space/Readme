@@ -1,0 +1,15 @@
+This file denote the project started,
+Check items:
+
+individual modules for
+- IO initialization
+- Control display patterns on LED
+- Measure distance from HC-SR04 sensor
+
+Sensor(HC-SR04):
+- IO2 for TRIG, IO3 for ECHO
+- Detect posedge and negedge with polling or selecting GPIO interrupt event
+
+LED(MAZ7219):
+- SPI1_SCK, SPI1_MOSI, IO12 for SPI1_SS
+- Setup spidev driver
