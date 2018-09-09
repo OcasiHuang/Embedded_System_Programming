@@ -1,1 +1,32 @@
-tmp
+Component:
+
+"RGBLed_ioctl.h"
+"RGBLed.c"
+"RGBLed_usr_tsc.c"
+"Makefile"
+"readme"(This file)
+
+Setup the Galileo2 board, also connect USB mouse to Galileo2
+
+How to execute:
+
+0. Please modify MOUSEFILE path in RGBLed_usr_tst.c, line 19
+1. type "make all"
+2. scp all the ko and o files to Galileo2
+
+Following parts are executed in Galileo2:
+
+2. insmod RGBLed.ko
+3. type "./test.o"
+
+Description:
+
+All modules in user space are integrated into RGBLed.c while all modules in kernel space are integrated in RGBLed.c. As "./test.o" is entered, the  will be activated and run.
+First, the executing program will ask user to enter the period of PWM, 
+which will control the luminous intensity of blinking LED. Then, the program will ask user to input GPIO output of R,G,B respectively, if the input is invalid(include GPIO7&GPIO8), the program will terminate immediately.
+
+If all input GPIO pad is legal, the LED should start blinking in [R,G,B,RG,RB,GB,RGB] sequence, each kind of light will last 0.5sec.
+
+The simulation will end when user click left or right button of mouse.
+
+
