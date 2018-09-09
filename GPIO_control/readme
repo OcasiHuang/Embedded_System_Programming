@@ -1,1 +1,36 @@
-temp
+Team 16 Members
+
+ASUID: 1213307613 
+Name: YU-CHUN HUANG
+
+ASUID: 1213383702 
+Name: MING-CHE WENG
+
+Component:
+
+"RGBLed.c"
+"Makefile"
+"readme"(This file)
+
+Setup the Galileo2 board, also connect USB mouse to Galileo2
+
+How to execute:
+
+0. Please modify MOUSEFILE path in pthread.c, line 12
+1. type "make all"
+2. scp files(RGBLed) to Galileo2
+
+Following parts are executed in Galileo2:
+
+3. type "./RGBLed"
+
+Description:
+
+All modules required in this part of assignment are integrated into RGBLed.c. As "./RGBLed" is entered, the executing program will ask user to enter the period of PWM, 
+which will control the luminous intensity of blinking LED. Then, the program will ask user to input GPIO output of R,G,B respectively, if the input is invalid, the program will terminate immediately.
+
+
+If all input GPIO pad is legal, the LED should start blinking in [R,G,B,RG,RB,GB,RGB] sequence, each kind of light will last 0.5sec.
+
+The simulation will end when user click left or right button of mouse.
+
