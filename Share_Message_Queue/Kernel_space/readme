@@ -1,1 +1,28 @@
-tmp
+Component:
+
+"pthread.c"
+"cqueue.c"
+"Makefile"
+"readme"(This file)
+
+Setup the Galileo2 board, also connect USB mouse to Galileo2
+
+How to execute:
+
+0. Please modify MOUSEFILE path in pthread.c, line 16
+1. type "make all"
+2. scp files to Galileo2
+
+Following parts are executed in Galileo2:
+
+2. insmod cqueue.ko
+3. type "./test.o"
+
+Description:
+
+All modules in user space are integrated into pthread.c while all modules in kernel space are integrated in cqueue.c. As "./test.o" is entered, the period threads/asynchronous threads/receiver thread will be activated and run.
+And all dequeue behavior can be monitor on the display.
+
+The simulation will end when user double-click left button of mouse in 0.5sec. And all data will pop out from each circular-queue. 
+Final read/write pointer status of the 2 queues will be showned.
+
